@@ -3,12 +3,14 @@ package com.moranta.accountmanagement.model;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "account")
 public class Account {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private BigDecimal amount;
@@ -17,6 +19,9 @@ public class Account {
     private Client owner;
 
     private LocalDateTime creationDate;
+
+    @OneToMany
+    private List<Transaction> transactions;
 
     public Account(BigDecimal amount, Client owner, LocalDateTime creationDate) {
         this.amount = amount;

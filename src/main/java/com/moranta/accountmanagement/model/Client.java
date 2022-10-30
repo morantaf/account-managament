@@ -2,7 +2,7 @@ package com.moranta.accountmanagement.model;
 
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "client", uniqueConstraints = {
@@ -11,6 +11,7 @@ import java.util.Set;
 public class Client {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -19,13 +20,16 @@ public class Client {
 
     private String surname;
 
-    @OneToMany
-    private Set<Account> accounts;
+    private String email;
 
-    public Client(String name, String customerId, String surname) {
+    @OneToMany
+    private List<Account> accounts;
+
+    public Client(String name, String customerId, String surname, String email) {
         this.name = name;
         this.customerId = customerId;
         this.surname = surname;
+        this.email = email;
     }
 
     public Client() {
@@ -63,6 +67,23 @@ public class Client {
     public Long getId() {
         return id;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
 
     @Override
     public String toString() {
