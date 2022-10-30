@@ -5,7 +5,7 @@ import com.moranta.accountmanagement.model.Account;
 import com.moranta.accountmanagement.model.Client;
 import com.moranta.accountmanagement.repository.AccountRepository;
 import com.moranta.accountmanagement.repository.ClientRepository;
-import com.moranta.accountmanagement.util.AccountRequestDTO;
+import com.moranta.accountmanagement.dto.AccountRequestDTO;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

@@ -1,8 +1,7 @@
 package com.moranta.accountmanagement.controller;
 
 import com.moranta.accountmanagement.service.AccountService;
-import com.moranta.accountmanagement.util.AccountRequestDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.moranta.accountmanagement.dto.AccountRequestDTO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,6 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    @Autowired
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
     }
