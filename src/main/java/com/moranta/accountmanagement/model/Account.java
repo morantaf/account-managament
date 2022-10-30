@@ -16,12 +16,21 @@ public class Account {
     private BigDecimal amount;
 
     @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)
     private Client owner;
 
     private LocalDateTime creationDate;
 
     @OneToMany
     private List<Transaction> transactions;
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 
     public Account(BigDecimal amount, Client owner, LocalDateTime creationDate) {
         this.amount = amount;

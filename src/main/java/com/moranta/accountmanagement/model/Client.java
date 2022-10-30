@@ -22,7 +22,7 @@ public class Client {
 
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner")
     private List<Account> accounts;
 
     public Client(String name, String customerId, String surname, String email) {
