@@ -1,11 +1,11 @@
-package com.moranta.accountmanagement.util;
+package com.moranta.accountmanagement.dto;
 
 import java.math.BigDecimal;
 
 public class AccountRequestDTO {
 
-    String customerId;
-    BigDecimal initialCredit;
+    private String customerId;
+    private BigDecimal initialCredit;
 
     public AccountRequestDTO(String customerId, BigDecimal initialCredit) {
         this.customerId = customerId;
