@@ -123,6 +123,6 @@ class AccountServiceTest {
         accountService.saveNewAccount(new BigDecimal("123"),client,localDateTime);
 
         // then
-        verify(accountRepository, times(1)).save(any());
+        verify(accountRepository, times(1)).save(any(Account.class));
     }
 }
