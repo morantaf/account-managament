@@ -5,7 +5,6 @@ import com.moranta.accountmanagement.exception.NotFoundException;
 import com.moranta.accountmanagement.model.Account;
 import com.moranta.accountmanagement.model.Client;
 import com.moranta.accountmanagement.model.Transaction;
-import com.moranta.accountmanagement.repository.AccountRepository;
 import com.moranta.accountmanagement.repository.ClientRepository;
 import com.moranta.accountmanagement.repository.TransactionRepository;
 import com.moranta.accountmanagement.dto.ClientInfoDTO;
@@ -23,13 +22,11 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
     private final TransactionRepository transactionRepository;
-    private final AccountRepository accountRepository;
     private final Mapper mapper;
 
-    public ClientService(ClientRepository clientRepository, TransactionRepository transactionRepository, AccountRepository accountRepository, Mapper mapper) {
+    public ClientService(ClientRepository clientRepository, TransactionRepository transactionRepository, Mapper mapper) {
         this.clientRepository = clientRepository;
         this.transactionRepository = transactionRepository;
-        this.accountRepository = accountRepository;
         this.mapper = mapper;
     }
 

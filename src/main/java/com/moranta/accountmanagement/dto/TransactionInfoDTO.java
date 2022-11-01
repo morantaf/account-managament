@@ -1,7 +1,5 @@
 package com.moranta.accountmanagement.dto;
 
-import com.moranta.accountmanagement.model.Transaction;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
