@@ -1,6 +1,6 @@
 package com.moranta.accountmanagement.service;
 
-import com.moranta.accountmanagement.dto.AccountRequestDTO;
+import com.moranta.accountmanagement.util.AccountRequest;
 import com.moranta.accountmanagement.exception.InvalidInputException;
 import com.moranta.accountmanagement.model.Account;
 import com.moranta.accountmanagement.model.Client;
@@ -42,7 +42,7 @@ class AccountServiceTest {
         // given
         String customerId = "ASE123";
         Optional<Client> notFoundClient = Optional.empty();
-        AccountRequestDTO request = new AccountRequestDTO(customerId,new BigDecimal(100));
+        AccountRequest request = new AccountRequest(customerId,new BigDecimal(100));
         when(clientRepository.findByCustomerId(customerId)).thenReturn(notFoundClient);
 
         // when
@@ -63,7 +63,7 @@ class AccountServiceTest {
         Optional<Client> clientOptional = Optional.of(client);
         when(clientRepository.findByCustomerId(customerId)).thenReturn(clientOptional);
 
-        AccountRequestDTO request = new AccountRequestDTO(customerId,new BigDecimal(-100));
+        AccountRequest request = new AccountRequest(customerId,new BigDecimal(-100));
 
         // when
         Exception exception = assertThrows(InvalidInputException.class,() -> {
@@ -84,7 +84,7 @@ class AccountServiceTest {
         Optional<Client> clientOptional = Optional.of(client);
         when(clientRepository.findByCustomerId(customerId)).thenReturn(clientOptional);
 
-        AccountRequestDTO request = new AccountRequestDTO(customerId,amount);
+        AccountRequest request = new AccountRequest(customerId,amount);
 
         // when
         accountService.createNewAccount(request);
@@ -103,7 +103,7 @@ class AccountServiceTest {
         Optional<Client> clientOptional = Optional.of(client);
         when(clientRepository.findByCustomerId(customerId)).thenReturn(clientOptional);
 
-        AccountRequestDTO request = new AccountRequestDTO(customerId,amount);
+        AccountRequest request = new AccountRequest(customerId,amount);
 
         // when
         accountService.createNewAccount(request);

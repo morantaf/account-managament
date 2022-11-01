@@ -5,7 +5,7 @@ import com.moranta.accountmanagement.model.Account;
 import com.moranta.accountmanagement.model.Client;
 import com.moranta.accountmanagement.repository.AccountRepository;
 import com.moranta.accountmanagement.repository.ClientRepository;
-import com.moranta.accountmanagement.dto.AccountRequestDTO;
+import com.moranta.accountmanagement.util.AccountRequest;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -26,9 +26,9 @@ public class AccountService {
     }
 
 
-    public void createNewAccount(AccountRequestDTO accountRequestDTO) {
-        String customerId = accountRequestDTO.getCustomerId();
-        BigDecimal initialCredit = accountRequestDTO.getInitialCredit();
+    public void createNewAccount(AccountRequest accountRequest) {
+        String customerId = accountRequest.getCustomerId();
+        BigDecimal initialCredit = accountRequest.getInitialCredit();
         LocalDateTime date = LocalDateTime.now();
         Optional<Client> client = clientRepository.findByCustomerId(customerId);
 
