@@ -5,6 +5,7 @@ import com.moranta.accountmanagement.dto.AccountRequestDTO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/account")
@@ -18,8 +19,8 @@ public class AccountController {
 
 
     @PostMapping
-    public void createNewAccount(@RequestBody AccountRequestDTO accountRequestDTO, HttpServletResponse response) {
-        accountService.createNewAccount(accountRequestDTO);
+    public void createNewAccount(@RequestBody @Valid AccountRequest accountRequest, HttpServletResponse response) {
+        accountService.createNewAccount(accountRequest);
         response.setStatus(HttpServletResponse.SC_CREATED);
     }
 }
