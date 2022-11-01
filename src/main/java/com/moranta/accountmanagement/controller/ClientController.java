@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/client")
+@RequestMapping("/api/v1/clients")
 public class ClientController {
 
     private final ClientService clientService;
@@ -19,7 +19,6 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public ClientInfoDTO getClientInfo(@PathVariable Long id) {
-        ClientInfoDTO clientInfo = clientService.renderClientInfo(id);
-        return clientInfo;
+        return clientService.renderClientInfo(id);
     }
 }
