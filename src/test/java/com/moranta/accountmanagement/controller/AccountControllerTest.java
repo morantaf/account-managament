@@ -34,7 +34,7 @@ class AccountControllerTest {
     }
 
     @Test
-    @DisplayName(value = "/api/v1/accounts - Incorrect post body throws 400")
+    @DisplayName(value = "/api/v1/accounts - returns 201 when account is created")
     void createNewAccount() throws Exception {
         // given
         Client client = createClient();
