@@ -52,20 +52,6 @@ class ClientControllerTest {
     @DisplayName(value = "/api/v1/clients/$id - return good data")
     void getClientInfo() throws Exception{
         // given
-        Client client = createTestData();
-
-        // when
-        mockMvc.perform(get("/api/v1/clients/{id}",client.getId()))
-                .andExpectAll(
-                        status().isOk(),
-                        jsonPath("$.name").value(client.getName()),
-                        jsonPath("$.surname").value(client.getSurname()),
-                        jsonPath("$.balance").value("500.0"),
-                        jsonPath("$.transactions").isNotEmpty()
-                );
-    }
-
-    Client createTestData() {
         Client client = new Client("Random", "QSD123","Name", "random@gmail.com");
         LocalDateTime date = LocalDateTime.now();
         BigDecimal balanceAccount1 = new BigDecimal("200");
@@ -81,11 +67,21 @@ class ClientControllerTest {
         client.setAccounts(accounts);
 
         Transaction transaction1 = new Transaction(balanceAccount1, date, account1);
-        Transaction transaction2 = new Transaction(balanceAccount2, date, account2);
 
-        List<Transaction> transactions = List.of(transaction1, transaction2);
-        transactionRepository.saveAll(transactions);
+        transactionRepository.save(transaction1);
 
-        return client;
+        // when
+        mockMvc.perform(get("/api/v1/clients/{id}",client.getId()))
+                .andExpectAll(
+                        status().isOk(),
+                        jsonPath("$.name").value(client.getName()),
+                        jsonPath("$.surname").value(client.getSurname()),
+                        jsonPath("$.balance").value("500.0"),
+                        jsonPath("$.transactions[0].amount").value("200.0"),
+                        jsonPath("$.transactions[0].id").value(transaction1.getId()),
+                        jsonPath("$.transactions[0].receiver.id").value(account1.getId()),
+                        jsonPath("$.transactions[0].date").value(date.toString())
+                );
     }
+
 }
