@@ -11,6 +11,8 @@ The details of the endpoints can be found in the swagger documentation. To get i
 
       http://localhost:8080/swagger-ui/index.html
 
+Use your favorite API testing tool to make the calls to the API
+
 ## Tests
 
 All the tests are located in the folder /src/test/java, you can run them using your favorite IDE
