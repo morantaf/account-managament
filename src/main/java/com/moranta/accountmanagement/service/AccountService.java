@@ -6,24 +6,20 @@ import com.moranta.accountmanagement.model.Client;
 import com.moranta.accountmanagement.repository.AccountRepository;
 import com.moranta.accountmanagement.repository.ClientRepository;
 import com.moranta.accountmanagement.util.AccountRequest;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
 public class AccountService {
 
     private final AccountRepository accountRepository;
     private final ClientRepository clientRepository;
     private final TransactionService transactionService;
-
-    public AccountService(AccountRepository accountRepository, ClientRepository clientRepository, TransactionService transactionService) {
-        this.accountRepository = accountRepository;
-        this.clientRepository = clientRepository;
-        this.transactionService = transactionService;
-    }
 
 
     public void createNewAccount(AccountRequest accountRequest) {

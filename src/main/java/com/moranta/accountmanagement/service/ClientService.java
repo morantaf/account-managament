@@ -9,6 +9,7 @@ import com.moranta.accountmanagement.repository.ClientRepository;
 import com.moranta.accountmanagement.repository.TransactionRepository;
 import com.moranta.accountmanagement.dto.ClientInfoDTO;
 import com.moranta.accountmanagement.util.Mapper;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -17,18 +18,13 @@ import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
+@AllArgsConstructor
 @Service
 public class ClientService {
 
     private final ClientRepository clientRepository;
     private final TransactionRepository transactionRepository;
     private final Mapper mapper;
-
-    public ClientService(ClientRepository clientRepository, TransactionRepository transactionRepository, Mapper mapper) {
-        this.clientRepository = clientRepository;
-        this.transactionRepository = transactionRepository;
-        this.mapper = mapper;
-    }
 
     public ClientInfoDTO renderClientInfo(Long id) {
         Optional<Client> clientOptional = clientRepository.findById(id);

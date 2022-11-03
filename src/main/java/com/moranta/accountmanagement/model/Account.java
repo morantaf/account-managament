@@ -1,10 +1,16 @@
 package com.moranta.accountmanagement.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
+@Setter
+@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "account")
 public class Account {
@@ -13,64 +19,18 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     private BigDecimal amount;
 
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
     private Client owner;
 
+    @NonNull
     private LocalDateTime creationDate;
 
     @OneToMany
     private List<Transaction> transactions;
 
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
-
-    public Account(BigDecimal amount, Client owner, LocalDateTime creationDate) {
-        this.amount = amount;
-        this.owner = owner;
-        this.creationDate = creationDate;
-    }
-
-    public Account() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public Client getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Client owner) {
-        this.owner = owner;
-    }
-
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
 }

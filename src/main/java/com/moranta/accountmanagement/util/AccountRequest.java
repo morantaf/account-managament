@@ -1,8 +1,13 @@
 package com.moranta.accountmanagement.util;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+@Getter
+@AllArgsConstructor
 public class AccountRequest {
 
     @NotNull
@@ -10,19 +15,6 @@ public class AccountRequest {
 
     @NotNull
     private BigDecimal initialCredit;
-
-    public AccountRequest(String customerId, BigDecimal initialCredit) {
-        this.customerId = customerId;
-        this.initialCredit = initialCredit;
-    }
-
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public BigDecimal getInitialCredit() {
-        return initialCredit;
-    }
 
     @Override
     public String toString() {
