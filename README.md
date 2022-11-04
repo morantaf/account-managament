@@ -19,4 +19,4 @@ All the tests are located in the folder /src/test/java, you can run them using y
 
 ## Bootstrap data
 
-Inside the ClientConfig, I've made it so that there will be some client created when the app is being launched. To test the /api/v1/clients/{id}, you can either use an id of 1, 2 or 3. To test the /api/v1/accounts, you can use the following customerIds as payload: "ASE1234", "ASE4321", "ASE5678"
+Inside the ClientConfig, I've added some clients to be created when the app is being launched. To test the /api/v1/clients/{id}, you can either use an id of 1, 2 or 3. To test the /api/v1/accounts, you can use the following customerIds as payload: "ASE1234", "ASE4321", "ASE5678"
