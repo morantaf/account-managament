@@ -32,10 +32,6 @@ public class AccountService {
             throw new InvalidInputException("Incorrect customerID");
         }
 
-        if(initialCredit.compareTo(BigDecimal.ZERO) < 0 ) {
-            throw new InvalidInputException("Initial credit can't be negative");
-        }
-
         Account createdAccount = saveNewAccount(initialCredit,client.get(),date);
 
         if(initialCredit.compareTo(BigDecimal.ZERO) > 0) {

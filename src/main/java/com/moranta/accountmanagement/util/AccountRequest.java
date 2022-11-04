@@ -3,6 +3,7 @@ package com.moranta.accountmanagement.util;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -13,6 +14,7 @@ public class AccountRequest {
     @NotNull
     private String customerId;
 
+    @Min(value = 0, message = "initialCredit can't be negative")
     @NotNull
     private BigDecimal initialCredit;
 
